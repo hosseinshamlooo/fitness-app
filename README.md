@@ -1,56 +1,86 @@
-# Welcome to your Expo app 👋
+# FitEvolution: The AI-Driven Character Fitness App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**FitEvolution** is a next-generation fitness application designed specifically for the Iranian market. It bridges the gap between traditional fitness tracking and gaming by utilizing a Tamagotchi-style 2D character that evolves physically based on the user's real-world training consistency and nutritional habits.
 
-## Get started
+---
 
-1. Install dependencies
+# 💎 Project Vision & Market Strategy
 
-   ```bash
-   npm install
-   ```
+## 🇮🇷 Market Localization
 
-2. Start the app
+Unlike global apps like MyFitnessPal or Strava, FitEvolution is built with the Iranian user in mind:
 
-   ```bash
-   npx expo start
-   ```
+- **Localized Database:** Native support for Iranian cuisine (Kebab, Ghormeh Sabzi, Ash, etc.) with accurate caloric/macro data.
+- **Home-First Approach:** Focused on home workouts to accommodate users without gym access.
+- **Economic Model:** An aggressive freemium model optimized for the Iranian payment ecosystem (Shetab / Café Bazaar).
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🎮 Gamified Retention (Character Evolution Engine)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The core differentiator is the **Character Evolution Engine**:
 
-## Get a fresh project
+- **Dynamic Physique:**
+  - High training volume → Muscle Pump sprites
+  - Consistent caloric deficit → Lean / Vascular sprites
 
-When you're ready, run:
+- **XP & Leveling:**  
+  Every workout feeds the character XP.
 
-```bash
-npm run reset-project
+- **Streak Mechanics:**  
+  Consistency unlocks:
+  - Auras
+  - Rare cosmetic upgrades
+  - Glasses, hairstyles, clothing
+
+---
+
+# 🛠 Technical Stack
+
+| Layer            | Technology                | Reason                                         |
+| ---------------- | ------------------------- | ---------------------------------------------- |
+| Framework        | React Native + Expo       | Cross-platform development with fast iteration |
+| Navigation       | Expo Router (File-based)  | Modern, scalable routing                       |
+| Backend          | Supabase                  | Managed PostgreSQL, Auth & Storage             |
+| State Management | Zustand                   | Lightweight & performant                       |
+| Styling          | NativeWind (Tailwind CSS) | Rapid UI development                           |
+| CDN / Proxy      | ArvanCloud / AbrDerak     | Optimized connectivity inside Iran             |
+
+---
+
+## 📂 Project Structure (Modular Architecture)
+
+This project follows a feature-based structure within the Expo Router framework:
+
+```text
+/root
+├── /app                    # EXPO ROUTER (File-based navigation)
+│   ├── (auth)              # Authentication flow (Login, Signup, Onboarding)
+│   ├── (tabs)              # MAIN APP TABS
+│   │   ├── index.tsx       # HOME: The Character Evolution Screen
+│   │   ├── workout.tsx     # WORKOUT: Log activity & view plans
+│   │   ├── nutrition.tsx   # FOOD: Iranian food search & calorie log
+│   │   ├── profile.tsx     # STATS: Evolution gallery & user settings
+│   │   └── _layout.tsx     # Tab bar configuration
+│   └── _layout.tsx         # Root layout (Providers: Theme, Auth, State)
+│
+├── /assets
+│   ├── /images
+│   │   ├── /character      # Modular PNG Layers (Base, Pumped, Lean)
+│   │   └── /ui             # Icons, backgrounds, custom illustrations
+│   └── /fonts              # Custom Persian/English fonts (Vazirmatn, etc.)
+│
+├── /src
+│   ├── /components         # UI COMPONENTS
+│   │   ├── /character      # CharacterRenderer.tsx, EvolutionLogic.ts
+│   │   ├── /shared         # Custom buttons, cards, progress bars
+│   │   └── /forms          # Search bars, input fields
+│   ├── /hooks              # useAuth, useCharacterStats, useNutrition
+│   ├── /store              # Zustand slices for User State & XP
+│   ├── /api                # Supabase client & table definitions
+│   └── /utils              # Calorie calculators, date formatters
+│
+├── app.json                # Expo configuration
+├── tailwind.config.js      # NativeWind configuration
+└── package.json            # Project dependencies
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
